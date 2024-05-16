@@ -28,7 +28,7 @@ export const items = [
   export const subcategory = [
     {
       _id: userIds[2],
-      name: "Mobile Phones",
+      name: "MobilePhones",
       image: "Mobile.jpg",
       description: "Subcategory for mobile phones",
       taxApplicability: true,

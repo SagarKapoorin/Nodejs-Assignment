@@ -11,10 +11,7 @@ const ItemsSchema = new mongoose.Schema(
     discount:{type:Number , required:true},
     totalAmount:{
         type:Number,
-        set:function(){
-            return this.baseAmount-this.discount;
-        }
-
+       required:true,
     }
     
   },
