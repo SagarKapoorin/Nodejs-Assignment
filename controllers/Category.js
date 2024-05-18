@@ -11,6 +11,22 @@ export const getCategory=async(req,res)=>{
     }
 
 }
+export const patchCategory=async(req,res)=>{
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+    
+        const category = await Category.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
+    //above code is updating to new category
+        if (!category) {
+          return res.status(404).json({ message: 'Category not found' });
+        }
+    
+        res.status(200).json(category);
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+}
 export const postCategory=async (req, res) => {
     try {
         const category = await Category.create(req.body);
@@ -30,7 +46,7 @@ export const getCategoryItems=async(req,res)=>{
                 path: 'items'
             }
         });
-
+        //populating both subcategories and subcategories->items
         if (!category) {
             return res.status(404).json({ message: 'Category not found' });
         }

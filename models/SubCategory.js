@@ -23,6 +23,6 @@ SubCategorySchema.virtual('parentCategory', {
     foreignField: 'subcategories',
     justOne: true
   });
-
+//above code create a virtual image of parentcategory i.e. category for checking taxApplicability , feel like overkill.
 const SubCategory = mongoose.model("SubCategory", SubCategorySchema);
 export default SubCategory;

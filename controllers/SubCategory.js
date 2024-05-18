@@ -11,6 +11,22 @@ export const getSubCategory=async(req,res)=>{
     }
 
 }
+export const patchSubCategory=async(req,res)=>{
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+    
+        const subcategory = await SubCategory.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
+    
+        if (!subcategory) {
+          return res.status(404).json({ message: 'SubCategory not found' });
+        }
+    
+        res.status(200).json(subcategory);
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+}
 export const postSubCategory=async(req,res)=>{
     const categoryName = req.params.categoryName;
     try {
@@ -20,6 +36,7 @@ export const postSubCategory=async(req,res)=>{
         }
         const subcategoryData = { ...req.body, taxApplicability: category.taxApplicability, tax: category.tax };
         const subcategory = await SubCategory.create(subcategoryData);
+        //updating categories-> subcategoires array also
         category.subcategories.push(subcategory._id);
         await category.save();
         

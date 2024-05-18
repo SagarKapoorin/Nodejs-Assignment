@@ -47,6 +47,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* ROUTES WITH FILES */
+//i am using multer in case want to send direct image form frontend
 app.post("/subcategory/:categoryName",upload.single("picture"),postSubCategory);
 app.post("/category",upload.single("picture"),postCategory);
 app.post("/items/:categoryName/:subcategoryName",upload.single("picture"),postItems);
@@ -64,7 +65,7 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-
+    //one time only fake data:
     // Category.insertMany(category);
     // SubCategory.insertMany(subcategory);
     // console.log(items);

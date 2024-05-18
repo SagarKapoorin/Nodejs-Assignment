@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+//fake data
 const userIds = [
   new mongoose.Types.ObjectId(),
   new mongoose.Types.ObjectId(),
@@ -14,7 +14,7 @@ const userIds = [
 export const items = [
     {
       _id: userIds[1],
-      name: "iPhone 12",
+      name: "iPhone12",
       image: "Iphone.jpg",
       description: "Latest iPhone model",
       taxApplicability: true,
