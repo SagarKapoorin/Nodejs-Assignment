@@ -66,7 +66,7 @@ export const getCategorysubcategory=async(req,res)=>{
     try{
         const category = await Category.findOne({ name: categoryId }).populate('subcategories');
         if (!category) {
-            return res.status(404).json({ message: 'Category not found' });
+            return res.status(404).json({ message: 'Category not found1' });
         }
         res.status(200).json(category.subcategories);
     }catch(error){
